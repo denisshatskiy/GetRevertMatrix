@@ -4,11 +4,11 @@ package com.epam;
  * Created by Denis_Shatskiy on 10/28/2015.
  */
 public class Print {
-    public String Print(double matrix[][]) {
+    public String print(double matrixOrigin[][]) {
         System.out.println("This matrix was typed :");
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                System.out.printf("%8.3f", matrix[i][j]);
+        for (int i = 0; i < matrixOrigin.length; i++) {
+            for (int j = 0; j < matrixOrigin.length; j++) {
+                System.out.printf("%8.3f", matrixOrigin[i][j]);
             }
             System.out.println();
         }
@@ -17,11 +17,12 @@ public class Print {
         return toString();
     }
 
-    public String PrintWorkMatrix(double matrixOne[][], int row, int col) {
+    public String printWorkMatrix(double matrixForWork[][], int row, int column) {
+        System.out.println();
         System.out.println("This is work matrix: ");
         for (int i = 0; i < row; i++) {
-            for (int j = 0; j < 2 * col; j++) {
-                System.out.printf("%8.3f", matrixOne[i][j]);
+            for (int j = 0; j < 2 * column; j++) {
+                System.out.printf("%8.3f", matrixForWork[i][j]);
             }
             System.out.println();
         }
@@ -29,11 +30,11 @@ public class Print {
 
         return toString();
     }
-    public String PrintRevertMatrix(double matrixOne[][], int row, int col) {
+    public String printRevertMatrix(double matrixForWork[][], int row, int column) {
         System.out.println("Revert matrix: ");
         for (int i = 0; i < row; i++) {
-            for (int j = col; j < 2 * col; j++) {
-                System.out.printf("%8.3f", matrixOne[i][j]);
+            for (int j = column; j < 2 * column; j++) {
+                System.out.printf("%8.3f", matrixForWork[i][j]);
             }
             System.out.println();
         }
@@ -41,6 +42,4 @@ public class Print {
 
         return toString();
     }
-
-
 }

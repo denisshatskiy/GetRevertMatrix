@@ -4,44 +4,43 @@ package com.epam;
  * Created by Denis_Shatskiy on 10/28/2015.
  */
 public class Calculate {
-    public static double[][] createWorkMatrix(double matrix[][], double matrixOne[][], int row, int col, int size) {
+    public static double[][] createWorkMatrix(double matrixOrigin[][], double matrixForWork[][], int row, int column, int size) {
         for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                matrixOne[i][j] = matrix[i][j];
+            for (int j = 0; j < column; j++) {
+                matrixForWork[i][j] = matrixOrigin[i][j];
             }
         }
 
-        //add matrix from 1-s
         for (int i = 0; i < row; i++) {
-            for (int j = col; j < 2 * col; j++) {
-                if (i + col == j) {
-                    matrixOne[i][j] = 1;
+            for (int j = column; j < 2 * column; j++) {
+                if (i + column == j) {
+                    matrixForWork[i][j] = 1;
                 } else {
-                    matrixOne[i][j] = 0;
+                    matrixForWork[i][j] = 0;
                 }
             }
         }
-    return matrixOne;
+        return matrixForWork;
     }
-    public static double[][] calculate(double matrixOne[][], int row, int col, int size) {
-        for (int k = 0; k < row; k ++) {
+    public static double[][] calculate ( double matrixForWork[][], int row, int col, int size){
+        for (int k = 0; k < row; k++) {
             for (int i = k; i < row; i++) {
-                double temp = matrixOne[k][k];
+                double temp = matrixForWork[k][k];
                 for (int j = k; j < 2 * col; j++) {
-                    matrixOne[i][j] = matrixOne[i][j] / temp;
+                    matrixForWork[i][j] = matrixForWork[i][j] / temp;
                 }
             }
 
             for (int i = 0; i < row; i++) {
-                double temp = matrixOne[i][k];
+                double temp = matrixForWork[i][k];
                 for (int j = 0; j < 2 * row; j++) {
                     if (i == k) {
                     } else {
-                        matrixOne[i][j] = matrixOne[i][j] - matrixOne[k][j] * temp;
+                        matrixForWork[i][j] = matrixForWork[i][j] - matrixForWork[k][j] * temp;
                     }
                 }
             }
         }
-        return matrixOne;
+        return matrixForWork;
     }
 }
