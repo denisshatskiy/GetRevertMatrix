@@ -34,8 +34,7 @@ public class Calculate {
             for (int i = 0; i < row; i++) {
                 double temp = matrixForWork[i][k];
                 for (int j = 0; j < 2 * row; j++) {
-                    if (i == k) {
-                    } else {
+                    if (i != k) {
                         matrixForWork[i][j] = matrixForWork[i][j] - matrixForWork[k][j] * temp;
                     }
                 }

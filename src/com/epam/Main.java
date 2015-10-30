@@ -14,7 +14,7 @@ public class Main {
         int row = size;
         int column = size;
 
-        double[][] matrixOrigin = new double [row][column];
+        double[][] matrixOrigin = new double[row][column];
         double[][] matrixForWork = new double[row][2 * column];
 
         for (int i = 0; i < row; i++) {
@@ -28,12 +28,13 @@ public class Main {
         Print print = new Print();
         print.print(matrixOrigin);
 
-        Calculate.createWorkMatrix(matrixOrigin,matrixForWork,row,column,size);
+        Calculate.createWorkMatrix(matrixOrigin, matrixForWork, row, column, size);
 
         print.printWorkMatrix(matrixForWork, row, column);
 
         Calculate.calculate(matrixForWork, row, column, size);
 
-        print.printRevertMatrix(matrixForWork, row, column);
+        print.printRevertMatrix(matrixForWork);
+
     }
 }
