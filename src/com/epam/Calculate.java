@@ -4,16 +4,16 @@ package com.epam;
  * Created by Denis_Shatskiy on 10/28/2015.
  */
 public class Calculate {
-    public static double[][] createWorkMatrix(double matrixOrigin[][], double matrixForWork[][], int row, int column, int size) {
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; j++) {
+    public static double[][] createWorkMatrix(double matrixOrigin[][], double matrixForWork[][]) {
+        for (int i = 0; i < matrixOrigin.length; i++) {
+            for (int j = 0; j < matrixOrigin.length; j++) {
                 matrixForWork[i][j] = matrixOrigin[i][j];
             }
         }
 
-        for (int i = 0; i < row; i++) {
-            for (int j = column; j < 2 * column; j++) {
-                if (i + column == j) {
+        for (int i = 0; i < matrixOrigin.length; i++) {
+            for (int j = matrixOrigin.length; j < 2 * matrixOrigin.length; j++) {
+                if (i + matrixOrigin.length == j) {
                     matrixForWork[i][j] = 1;
                 } else {
                     matrixForWork[i][j] = 0;
@@ -22,18 +22,19 @@ public class Calculate {
         }
         return matrixForWork;
     }
-    public static double[][] calculate ( double matrixForWork[][], int row, int col, int size){
-        for (int k = 0; k < row; k++) {
-            for (int i = k; i < row; i++) {
+
+    public static double[][] calculate(double matrixForWork[][]) {
+        for (int k = 0; k < matrixForWork.length; k++) {
+            for (int i = k; i < matrixForWork.length; i++) {
                 double temp = matrixForWork[k][k];
-                for (int j = k; j < 2 * col; j++) {
+                for (int j = k; j < 2 * matrixForWork.length; j++) {
                     matrixForWork[i][j] = matrixForWork[i][j] / temp;
                 }
             }
 
-            for (int i = 0; i < row; i++) {
+            for (int i = 0; i < matrixForWork.length; i++) {
                 double temp = matrixForWork[i][k];
-                for (int j = 0; j < 2 * row; j++) {
+                for (int j = 0; j < 2 * matrixForWork.length; j++) {
                     if (i != k) {
                         matrixForWork[i][j] = matrixForWork[i][j] - matrixForWork[k][j] * temp;
                     }

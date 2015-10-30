@@ -11,13 +11,11 @@ public class Main {
         Scanner input = new Scanner(System.in);
         System.out.print("Size of matrix: ");
         size = input.nextInt();
-        int row = size;
-        int column = size;
 
-        double[][] matrixOrigin = new double[row][column];
-        double[][] matrixForWork = new double[row][2 * column];
+        double[][] matrixOrigin = new double[size][size];
+        double[][] matrixForWork = new double[size][2 * size];
 
-        for (int i = 0; i < row; i++) {
+        for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 System.out.print("Type element of matrix[" + i + "][" + j + "]:");
                 matrixOrigin[i][j] = input.nextDouble();
@@ -28,13 +26,12 @@ public class Main {
         Print print = new Print();
         print.print(matrixOrigin);
 
-        Calculate.createWorkMatrix(matrixOrigin, matrixForWork, row, column, size);
+        Calculate.createWorkMatrix(matrixOrigin, matrixForWork);
 
-        print.printWorkMatrix(matrixForWork, row, column);
+        print.printWorkMatrix(matrixForWork);
 
-        Calculate.calculate(matrixForWork, row, column, size);
+        Calculate.calculate(matrixForWork);
 
         print.printRevertMatrix(matrixForWork);
-
     }
 }
