@@ -1,10 +1,7 @@
 package com.epam;
 
-/**
- * Created by Denis_Shatskiy on 10/28/2015.
- */
-public class Calculate {
-    public static double[][] createWorkMatrix(double matrixOrigin[][], double matrixForWork[][]) {
+public class Calculator {
+    public static void createWorkMatrix(double matrixOrigin[][], double matrixForWork[][]) {
         for (int i = 0; i < matrixOrigin.length; i++) {
             for (int j = 0; j < matrixOrigin.length; j++) {
                 matrixForWork[i][j] = matrixOrigin[i][j];
@@ -20,10 +17,9 @@ public class Calculate {
                 }
             }
         }
-        return matrixForWork;
     }
 
-    public static double[][] calculate(double matrixForWork[][]) {
+    public static void calculate(double matrixForWork[][]) {
         for (int k = 0; k < matrixForWork.length; k++) {
             for (int i = k; i < matrixForWork.length; i++) {
                 double temp = matrixForWork[k][k];
@@ -41,6 +37,5 @@ public class Calculate {
                 }
             }
         }
-        return matrixForWork;
     }
 }

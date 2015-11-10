@@ -2,11 +2,9 @@ package com.epam;
 
 import java.text.NumberFormat;
 
-/**
- * Created by Denis_Shatskiy on 10/28/2015.
- */
-public class Print {
+public class Printer {
     NumberFormat formatter = NumberFormat.getNumberInstance();
+
     public String print(double matrixOrigin[][]) {
         System.out.println("This matrix was typed :");
         for (int i = 0; i < matrixOrigin.length; i++) {
@@ -35,7 +33,6 @@ public class Print {
     }
 
     public String printRevertMatrix(double matrixForWork[][]) {
-
         System.out.println("Revert matrix: ");
         outer:
         for (int i = 0; i < matrixForWork.length; i++) {
@@ -44,13 +41,12 @@ public class Print {
                     System.out.println("The matrix is not calculated. Please type new matrix.");
                     break outer;
                 } else {
-                    System.out.print(formatter.format(matrixForWork[i][j]) + "\t");
+                    System.out.printf("%8.3f", matrixForWork[i][j]);
                 }
             }
             System.out.println();
         }
         System.out.println();
-
         return toString();
     }
 }

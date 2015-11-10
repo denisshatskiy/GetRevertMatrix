@@ -23,15 +23,15 @@ public class Main {
         }
         input.close();
 
-        Print print = new Print();
-        print.print(matrixOrigin);
+        Printer printer = new Printer();
+        printer.print(matrixOrigin);
 
-        Calculate.createWorkMatrix(matrixOrigin, matrixForWork);
+        Calculator.createWorkMatrix(matrixOrigin, matrixForWork);
 
-        print.printWorkMatrix(matrixForWork);
+        printer.printWorkMatrix(matrixForWork);
 
-        Calculate.calculate(matrixForWork);
+        Calculator.calculate(matrixForWork);
 
-        print.printRevertMatrix(matrixForWork);
+        printer.printRevertMatrix(matrixForWork);
     }
 }
