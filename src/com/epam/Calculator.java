@@ -1,5 +1,7 @@
 package com.epam;
 
+import java.util.Arrays;
+
 public class Calculator {
     public double[][] createWorkMatrix(double matrixOrigin[][]) {
         double[][] matrixForWork = new double[matrixOrigin.length][matrixOrigin.length * 2];
@@ -7,9 +9,6 @@ public class Calculator {
             for (int j = 0; j < matrixOrigin.length; j++) {
                 matrixForWork[i][j] = matrixOrigin[i][j];
             }
-        }
-
-        for (int i = 0; i < matrixOrigin.length; i++) {
             for (int j = matrixOrigin.length; j < 2 * matrixOrigin.length; j++) {
                 if (i + matrixOrigin.length == j) {
                     matrixForWork[i][j] = 1;
@@ -22,23 +21,23 @@ public class Calculator {
     }
 
     public double[][] calculate(double matrixForWork[][]) {
-        for (int k = 0; k < matrixForWork.length; k++) {
-            for (int i = k; i < matrixForWork.length; i++) {
-                double temp = matrixForWork[k][k];
-                for (int j = k; j < 2 * matrixForWork.length; j++) {
-                    matrixForWork[i][j] = matrixForWork[i][j] / temp;
+        double [][] matrixForCalculate = Arrays.copyOf(matrixForWork,matrixForWork.length);
+        for (int k = 0; k < matrixForCalculate.length; k++) {
+            for (int i = k; i < matrixForCalculate.length; i++) {
+                double temp = matrixForCalculate[k][k];
+                for (int j = k; j < 2 * matrixForCalculate.length; j++) {
+                    matrixForCalculate[i][j] = matrixForCalculate[i][j] / temp;
                 }
             }
-
-            for (int i = 0; i < matrixForWork.length; i++) {
-                double temp = matrixForWork[i][k];
-                for (int j = 0; j < 2 * matrixForWork.length; j++) {
+            for (int i = 0; i < matrixForCalculate.length; i++) {
+                double temp = matrixForCalculate[i][k];
+                for (int j = 0; j < 2 * matrixForCalculate.length; j++) {
                     if (i != k) {
-                        matrixForWork[i][j] = matrixForWork[i][j] - matrixForWork[k][j] * temp;
+                        matrixForCalculate[i][j] = matrixForCalculate[i][j] - matrixForCalculate[k][j] * temp;
                     }
                 }
             }
         }
-        return matrixForWork;
+        return matrixForCalculate;
     }
 }

@@ -3,7 +3,7 @@ package com.epam;
 import java.util.Scanner;
 
 public class Input {
-    public double[][] inputMatrix() {
+    public double[][] readMatrix() {
 
         Scanner input = new Scanner(System.in);
         System.out.print("Size of matrix: ");

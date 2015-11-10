@@ -4,19 +4,19 @@ public class Main {
 
     public static void main(String[] args) {
         Input input = new Input();
-        double [][] matrixOrigin = input.inputMatrix();
+        double [][] matrixOrigin = input.readMatrix();
 
         Printer printer = new Printer();
-        System.out.println("\nThis matrix was typed :");
+        System.out.println("This matrix was typed :");
         printer.print(matrixOrigin);
 
         Calculator calculator = new Calculator();
         double[][]matrixForWork = calculator.createWorkMatrix(matrixOrigin);
-        System.out.println("\nMatrix for work : ");
+        System.out.println("Matrix for work : ");
         printer.print(matrixForWork);
 
         double[][] revertMatrix = calculator.calculate(matrixForWork);
-        System.out.println("\nRevert matrix :");
-        printer.print(revertMatrix);
+        System.out.println("Revert matrix :");
+        printer.print(revertMatrix); // Is it correct? Or I should use "matrixForCalculate"?
     }
 }
