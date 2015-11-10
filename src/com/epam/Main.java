@@ -1,37 +1,22 @@
 package com.epam;
 
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {
-
-        int size;
-
-        Scanner input = new Scanner(System.in);
-        System.out.print("Size of matrix: ");
-        size = input.nextInt();
-
-        double[][] matrixOrigin = new double[size][size];
-        double[][] matrixForWork = new double[size][2 * size];
-
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                System.out.print("Type element of matrix[" + i + "][" + j + "]:");
-                matrixOrigin[i][j] = input.nextDouble();
-            }
-        }
-        input.close();
+        Input input = new Input();
+        double [][] matrixOrigin = input.inputMatrix();
 
         Printer printer = new Printer();
+        System.out.println("\nThis matrix was typed :");
         printer.print(matrixOrigin);
 
-        Calculator.createWorkMatrix(matrixOrigin, matrixForWork);
+        Calculator calculator = new Calculator();
+        double[][]matrixForWork = calculator.createWorkMatrix(matrixOrigin);
+        System.out.println("\nMatrix for work : ");
+        printer.print(matrixForWork);
 
-        printer.printWorkMatrix(matrixForWork);
-
-        Calculator.calculate(matrixForWork);
-
-        printer.printRevertMatrix(matrixForWork);
+        double[][] revertMatrix = calculator.calculate(matrixForWork);
+        System.out.println("\nRevert matrix :");
+        printer.print(revertMatrix);
     }
 }

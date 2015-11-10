@@ -1,7 +1,8 @@
 package com.epam;
 
 public class Calculator {
-    public static void createWorkMatrix(double matrixOrigin[][], double matrixForWork[][]) {
+    public double[][] createWorkMatrix(double matrixOrigin[][]) {
+        double[][] matrixForWork = new double[matrixOrigin.length][matrixOrigin.length * 2];
         for (int i = 0; i < matrixOrigin.length; i++) {
             for (int j = 0; j < matrixOrigin.length; j++) {
                 matrixForWork[i][j] = matrixOrigin[i][j];
@@ -17,9 +18,10 @@ public class Calculator {
                 }
             }
         }
+        return matrixForWork;
     }
 
-    public static void calculate(double matrixForWork[][]) {
+    public double[][] calculate(double matrixForWork[][]) {
         for (int k = 0; k < matrixForWork.length; k++) {
             for (int i = k; i < matrixForWork.length; i++) {
                 double temp = matrixForWork[k][k];
@@ -37,5 +39,6 @@ public class Calculator {
                 }
             }
         }
+        return matrixForWork;
     }
 }
